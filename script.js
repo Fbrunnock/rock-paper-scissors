@@ -12,7 +12,6 @@ function getComputerChoice () {
 function playRound (playerSelection, computerSelection) {
     var playerSelection = playerSelection.toLowerCase();
     computerSelection = getComputerChoice();
-    console.log(playerSelection);
     console.log(computerSelection);
     if (playerSelection === computerSelection) {
         return "Draw";
@@ -24,6 +23,24 @@ function playRound (playerSelection, computerSelection) {
 }
 
 function game () {
-    var result = playRound(prompt("Input your choice"), getComputerChoice());
-    console.log(result);
+    var player = 0
+    var computer = 0
+    for (i = 0; i < 5; i++){
+        var result = playRound(prompt("Input your choice"), getComputerChoice());
+        if (result === "You win!") {
+            player += 1;
+            console.log("Player: " + player + " Computer: " + computer);
+        } else if (result === "You lose!") {
+            computer += 1;
+            console.log("Player: " + player + " Computer: " + computer);
+        } else if (result === "Draw") {
+        }
+    }
+    if (player > computer) {
+        return "You win the game!"
+    } else if (computer > player) {
+        return "You lose the game!"
+    } else if (computer = player) {
+        return "You drew!"
+    }
 }
