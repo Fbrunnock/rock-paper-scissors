@@ -1,6 +1,6 @@
 var playerWins = 0
 var compWins = 0
-const btn = document.querySelector('button')
+const btn = document.querySelectorAll('button');
 const history = document.querySelector("#history");
 const matchRecord = document.createElement('div');
 matchRecord.classList.add('matchRecord')
@@ -20,13 +20,16 @@ function getComputerChoice () {
 function playRound (playerSelection, computerSelection) {
     if ((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'paper' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'rock')) {
         compWins++;
+        console.log(playerSelection)
     } else {
         playerWins++;
+        console.log(playerSelection)
     };
     
 }
 
-const playerSelection = btn.addEventListener("click", function(e){
+btn.forEach (function (i){
+    i.addEventListener("click", function(e){
     document.getElementById("result").innerHTML = playRound(e.currentTarget.id, getComputerChoice());
     const matchRecord = document.createElement('div');
     matchRecord.classList.add('matchRecord');
@@ -44,4 +47,4 @@ const playerSelection = btn.addEventListener("click", function(e){
         playerWins = 0;
         compWins = 0;
     }
-});
+})});
